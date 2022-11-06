@@ -18,9 +18,10 @@ def cofactor(list_photo):
     for baris in range(0,row):
       for kolom in range(0,col):
         if(list_photo[i][baris][kolom]<0):
-          list_photo[i][baris][kolom] = list_photo[i][baris][kolom]*(-1)#kalau ada nilai negatif di pengurangan matrix
+          list_photo[i][baris][kolom] = list_photo[i][baris][kolom]*(-1)
+  gabung = list_photo[0]
   for i in range(1,len(list_photo)):
-    gabung = np.concatenate((list_photo[0],list_photo[i]),axis=1)
+    gabung = np.concatenate((gabung,list_photo[i]),axis=1)
   trnsps = np.transpose(gabung)
   L = np.matmul(gabung,trnsps)
   return L
@@ -32,6 +33,10 @@ a = [[2,0,1],
 b = [[1,1,1],
      [0,1,0],
      [1,2,2]]
-c = [a,b] #misalkan list matrik foto
+e = [[1,2,1],
+     [2,2,0],
+     [0,2,1]]
+c = [a,b,e] #misalkan list matrik foto
 d = cofactor(c)
 print(d)
+print(len(c))
