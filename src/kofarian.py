@@ -1,7 +1,7 @@
 import numpy as np
 import math
 
-def cofactor(list_photo):
+def kofarian(list_photo):
   n1 = list_photo[0]
   row = len(n1)
   col = len(n1[0])
@@ -37,6 +37,6 @@ e = [[1,2,1],
      [2,2,0],
      [0,2,1]]
 c = [a,b,e] #misalkan list matrik foto
-d = cofactor(c)
+d = kofarian(c)
 print(d)
 print(len(c))
