@@ -23,7 +23,7 @@ def kofarian(list_photo):
   for i in range(1,len(list_photo)):
     gabung = np.concatenate((gabung,list_photo[i]),axis=1)
   trnsps = np.transpose(gabung)
-  L = np.matmul(gabung,trnsps)
+  L = np.dot(gabung,trnsps)
   return L
 
 
