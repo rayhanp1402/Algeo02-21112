@@ -16,7 +16,7 @@ for filename in os.listdir(r"..\Algeo02-21112\{}".format(folder)):
         count += 1
 
 # 2. Mencari nilai rata-rata dataset
-jum = [0 for j in range(65536)] # 256 x 256
+sum = [0 for j in range(65536)] # 256 x 256
 for i in range(count):
     sum = numpy.add(sum, images[i]) 
 mean = numpy.divide(sum, count)
