@@ -21,9 +21,29 @@
 <br>
 
 ### Cara Clone Program
-Clone dilakukan agar program/aplikasi dapat dijalankan pada mesin Anda._
+Clone dilakukan agar program/aplikasi dapat dijalankan pada mesin Anda.
 Jalankan perintah berikut pada terminal
 
 ```sh
 git clone https://github.com/rayhanp1402/Algeo02-21112.git
+```
+<br>
+
+<br>
+
+### Cara Menjalankan Program
+Pindah ke directory tempat Anda clone program pada terminal, contoh :
+
+```sh
+cd /mnt/c
+```
+
+Jika sudah berada pada directory yang dimaksud, lakukan perintah-perintah berikut
+
+```sh
+cd Algeo02-21112
+
+cd src
+
+python eigenface.py
 ```
