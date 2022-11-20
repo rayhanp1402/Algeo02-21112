@@ -18,8 +18,10 @@
   3. [Menu](#menu)
   4. [Contoh Penggunaan](#contoh-penggunaan)
 
+<br>
+
 ### Cara Clone Program
-Clone dilakukan agar program/aplikasi dapat dijalankan pada mesin Anda.
+Clone dilakukan agar program/aplikasi dapat dijalankan pada mesin Anda._
 Jalankan perintah berikut pada terminal
 
 ```sh
