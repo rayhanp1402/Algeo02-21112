@@ -133,6 +133,8 @@ def eigenVector(Matrix):
             for j in range(len(eigenVecMatrix[0])):
                 del eigenVecMatrix[j][i]
 
+    eigenVecMatrix = np.matrix(eigenVecMatrix)
+
     return eigenVecMatrix
 
 
@@ -142,29 +144,29 @@ def eigenVector(Matrix):
 
 # TESTS
 # Samples
-#a = ([[0, 0, -2], 
+# a = ([[0, 0, -2], 
 #      [1, 2, 1], 
 #      [1, 0, 3]])
 
-#b = [[3, 0],
+# b = [[3, 0],
 #     [8, -1]]
 
 
-#c= [[10, 0, 2],
+# c= [[10, 0, 2],
 #    [0, 10, 4],
 #    [2, 4, 2]]
 
-#d = [[24294.3, 23763.3, -22564, -27522, 2028.72],         
+# d = [[24294.3, 23763.3, -22564, -27522, 2028.72],         
 #     [23763.3, 37215.3, -26584, -31211, -3183.3],         
 #     [-22564, -26584, 32686.9, 25780.3, -9319.5],       
 #     [-27522, -31211, 25780.3, 45872.7, -12919],       
 #     [2028.72, -3183.3, -9319.5, -12919, 23393.1]]
 
-#e = [[2, 1, 0],
+# e = [[2, 1, 0],
 #     [1, 2, 0],
 #     [0, 0, 3],]
 
-#f = [[1, 1, 1, 1, 1],
+# f = [[1, 1, 1, 1, 1],
 #     [16, 8, 4, 2, 1],
 #     [81, 27, 9, 3, 1],
 #     [256, 64, 16, 4, 1],
@@ -172,18 +174,18 @@ def eigenVector(Matrix):
 
 
 
-# Eigen Values
-#print("Test Eigen Values :")
-#print("Eigen Value Matriks a: ", eigenValue(a)[0])
-#print("Eigen Value Matriks b: ", eigenValue(b)[0])
-#print("Eigen Value Matriks c: ", eigenValue(c)[0])
-#print("Eigen Value Matriks d: ", eigenValue(d)[0])
-#print("Eigen Value Matriks e: ", eigenValue(e)[0])
-#print("Eigen Value Matriks f: ", eigenValue(f)[0], '\n')
+# # Eigen Values
+# print("Test Eigen Values :")
+# print("Eigen Value Matriks a: ", eigenValue(a)[0])
+# print("Eigen Value Matriks b: ", eigenValue(b)[0])
+# print("Eigen Value Matriks c: ", eigenValue(c)[0])
+# print("Eigen Value Matriks d: ", eigenValue(d)[0])
+# print("Eigen Value Matriks e: ", eigenValue(e)[0])
+# print("Eigen Value Matriks f: ", eigenValue(f)[0], '\n')
 
 
 
-# Eigen Vectors
-#print("Test Eigen Values :")
-#print("Eigen Vector Matriks b:\n", np.matrix(eigenVector(b)), '\n')
-#print("Eigen Vector Matriks d:\n", np.matrix(eigenVector(d)), '\n')
+# # Eigen Vectors
+# print("Test Eigen Values :")
+# print("Eigen Vector Matriks b:\n", (eigenVector(b)), '\n')
+# print("Eigen Vector Matriks d:\n", (eigenVector(d)), '\n')
