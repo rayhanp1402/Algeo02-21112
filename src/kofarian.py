@@ -23,20 +23,7 @@ def kofarian(list_photo):
   for i in range(1,len(list_photo)):
     gabung = np.concatenate((gabung,list_photo[i]),axis=1)
   trnsps = np.transpose(gabung)
-  L = np.dot(gabung,trnsps)
+  L = np.matmul(gabung,trnsps)
   return L
 
 
-a = [[2,0,1],
-     [1,2,0],
-     [0,2,4]]
-b = [[1,1,1],
-     [0,1,0],
-     [1,2,2]]
-e = [[1,2,1],
-     [2,2,0],
-     [0,2,1]]
-c = [a,b,e] #misalkan list matrik foto
-d = kofarian(c)
-print(d)
-print(len(c))
