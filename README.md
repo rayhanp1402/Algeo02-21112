@@ -13,7 +13,15 @@
 
 
 ### Table of Contents
-  1. [Cara Menjalankan Program](#cara-menjalankan-program)
-  2. [Cara Compile/Kompilasi](#cara-compilekompilasi)
+  1. [Cara Clone Program](#cara-clone-program)
+  2. [Cara Menjalankan Program](#cara-menjalankan-program)
   3. [Menu](#menu)
   4. [Contoh Penggunaan](#contoh-penggunaan)
+
+### Cara Clone Program
+Clone dilakukan agar program/aplikasi dapat dijalankan pada mesin Anda.
+Jalankan perintah berikut pada terminal
+
+```sh
+git clone https://github.com/rayhanp1402/Algeo02-21112.git
+```
