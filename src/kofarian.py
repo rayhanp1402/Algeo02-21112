@@ -1,5 +1,7 @@
 import numpy as np
 import math
+from extracdata_func import *
+from eigen import *
 
 def kofarian(list_photo):
   n1 = list_photo[0]
@@ -25,5 +27,14 @@ def kofarian(list_photo):
   trnsps = np.transpose(gabung)
   L = np.matmul(gabung,trnsps)
   return L
+
+k,l = extractor_data('D:\python\Tubes Algeo 2\Algeo02-21112\dataset')
+p = kofarian(k)
+print(len(p))
+print(len(p[0]))
+print(type(p[0][0]))
+a = EigenValue(p)
+print(a)
+# p = len(l)
 
 

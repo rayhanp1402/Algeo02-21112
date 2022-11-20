@@ -24,24 +24,27 @@ logobel.grid(column=0,row=1)
 
 ingfolder = '' #buat folder training image 
 copy = '' #copy folder training image
-MatrixDisplay = []#untuk display ke app
-MatEigVec = []
-HitungMatrix = []
-buang = []
+# MatrixDisplay = []#untuk display ke app
+# MatEigVec = []
+# HitungMatrix = []
+# buang = []
 def cari():
     ingfolder = filedialog.askdirectory()
     global copy 
-    global MatrixDisplay
-    global MatEigVec
-    global HitungMatrix
-    global buang
     copy = ingfolder
     if(ingfolder==''):
         hasilfolder.config(text='Belum milih folder nih')
     elif(ingfolder!=''):
         hasilfolder.config(text='Mantap')
-        hitungMat,MatrixDisplay =extractor_data(ingfolder)
-        HitungMatrix,buang = extractor_data(ingfolder)
+def hitunghitung():
+    global copy       
+    if(copy!=''):
+        global hitungMat,MatrixDisplay
+        global HitungMatrix,buang
+        global kov 
+        global MatEigVec 
+        hitungMat,MatrixDisplay =extractor_data(copy)
+        HitungMatrix,buang = extractor_data(copy)
         kov = kofarian(hitungMat)
         MatEigVec = eigenVector(kov)
 
@@ -68,6 +71,9 @@ def openimage():
         global copyimage
         global displayimage
         global displaykeapp
+        global MatEigVec
+        global MatImage
+        global HitungMatrix
         copyimage = imagename
         if(imagename==''):
             hasilimage.config(text='Belum milih file nih')
@@ -77,6 +83,9 @@ def openimage():
             img2 = img.resize((256,256))
             displayimage = ImageTk.PhotoImage(img2)
             Labelimage.config(image=displayimage,width=256,height=256)
+            #----------------------------------------------------
+            #______Hitung Hitung_______________________________
+            hitunghitung()
             MatImage = extraxtor_img(imagename)
             dist = distance(MatEigVec,MatImage,HitungMatrix)
             Index = getMinIdx(dist)
@@ -84,11 +93,6 @@ def openimage():
             blue,green,red = cv2.split(displayfoto)
             imagemerge = cv2.merge((red,green,blue))
             displaykeapp = Img.fromarray(imagemerge)
-
-
-
-
-            
             Labelmirip.config(image=displaykeapp,width=256,height=256)
     
 imagebut = tk.Button(window,text="Select",command=openimage)
