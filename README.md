@@ -38,7 +38,7 @@ Pindah ke directory tempat Anda clone program pada terminal, contoh :
 cd /mnt/c
 ```
 
-Jika sudah berada pada directory yang dimaksud, lakukan perintah-perintah berikut
+Jika sudah berada pada directory yang dimaksud, jalankan perintah-perintah berikut
 
 ```sh
 cd Algeo02-21112
@@ -47,3 +47,11 @@ cd src
 
 python eigenface.py
 ```
+
+<br>
+
+<br>
+
+### Menu
+Tampilan menu program
+![Menu](https://cdn.discordapp.com/attachments/865154167169351730/1043844516467183716/face_recognition_app.jpg)
