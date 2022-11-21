@@ -28,7 +28,7 @@ def kofarian(list_photo):
   L = np.matmul(gabung,trnsps)
   return L
 
-k,l = extractor_data('D:\python\Tubes Algeo 2\Algeo02-21112\dataset')
+k,l = extractor_data('..\Algeo02-21112\test\dataset')
 p = kofarian(k)
 print(len(p))
 print(len(p[0]))
