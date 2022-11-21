@@ -16,7 +16,7 @@ judul = tk.Label(window,text="Selamat datang di Face Recognition")
 judul.grid(column=0,row=0)
 
 
-logo = Img.open('D:\python\Tubes Algeo 2\Algeo02-21112\src\logo.png')
+logo = Img.open('..\Algeo02-21112\src\logo.png')
 logo = ImageTk.PhotoImage(logo)
 logobel = tk.Label(image=logo)
 logobel.image = logo
