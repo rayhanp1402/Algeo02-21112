@@ -3,11 +3,11 @@ import numpy as np
 import os
 #from PIL import Image as Img,ImageTk
 #from tkinter import *
-def trnsflat(list):
-    trans = np.zeros(shape=(len(list),1))
-    for i in range(len(list)):
-        trans[i][0] = list[i]
-    return trans
+# def trnsflat(list):
+#     trans = np.zeros(shape=(len(list),1))
+#     for i in range(len(list)):
+#         trans[i][0] = list[i]
+#     return trans
 
 def extractor_data(file_path):
     images = []
@@ -23,9 +23,7 @@ def extractor_data(file_path):
         img_gray = cv2.imread(os.path.join(path, filename),cv2.IMREAD_GRAYSCALE)#hitung
         img_gray = cv2.resize(img_gray, (256, 256))#hitung
 
-        img_gray = img_gray.flatten()#di flat buat hitung
-        transflat = trnsflat(img_gray)
-        images.append(transflat) 
+        images.append(img_gray) 
     return images,images_kotak
 #k,l = extractor('D:\python\Tubes Algeo 2\Algeo02-21112\dataset')
 
