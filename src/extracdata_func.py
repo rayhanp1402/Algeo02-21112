@@ -1,31 +1,36 @@
 import cv2
 import numpy as np
 import os
+
 #from PIL import Image as Img,ImageTk
-#from tkinter import *
-# def trnsflat(list):
-#     trans = np.zeros(shape=(len(list),1))
-#     for i in range(len(list)):
-#         trans[i][0] = list[i]
-#     return trans
+# from tkinter import *
+def trnsflat(list):
+    trans = np.zeros(shape=(len(list),1))
+    for i in range(len(list)):
+        trans[i][0] = list[i]
+    return trans
 
 def extractor_data(file_path):
     images = []
-    images_kotak = []
+    pathallimage = []
     path = file_path
     for filename in os.listdir(path):
-        img = cv2.imread(os.path.join(path, filename))#display
-        img = cv2.resize(img, (256, 256))#display
+        pathofimage = os.path.join(path, filename)#display
         
-        images_kotak.append(img)#display
+        pathallimage.append(pathofimage)#display
 
 
         img_gray = cv2.imread(os.path.join(path, filename),cv2.IMREAD_GRAYSCALE)#hitung
         img_gray = cv2.resize(img_gray, (256, 256))#hitung
+        img_gray = img_gray.flatten()
+        trnsp = trnsflat(img_gray)
 
-        images.append(img_gray) 
-    return images,images_kotak
-#k,l = extractor('D:\python\Tubes Algeo 2\Algeo02-21112\dataset')
+        images.append(trnsp) 
+    return images,pathallimage
+# k,l = extractor_data('D:\\python\\Tubes Algeo 2\\Algeo02-21112\\test\\dataset')
+# p = k[0]
+
+# print(len(p[0]))
 
 
 #win = Tk()
