@@ -12,134 +12,80 @@ def copy(Matrix):
 
 
 
-def matrixMultiplication(Matrix1, Matrix2):
-    sum = 0
-    resMatrix = [[0 for j in range(len(Matrix1))] for i in range(len(Matrix1))]
-    for i in range(len(Matrix1)):
-        for j in range(len(Matrix1)):
-            for k in range(len(Matrix1)):
-                sum += Matrix1[i][k] * Matrix2[k][j]
-            resMatrix[i][j] = sum
-            sum = 0
-    
-    return resMatrix
-
-
-
-def vectorSubtraction(vector1, vector2):
-    res = []
-    for i in range(len(vector1)):
-        res.append(vector1[i] - vector2[i])
-
-    return res
-
-
-
-def multiplyByScalar(scalar, vector):
-    resVector = []
-    for i in range(len(vector)):
-        resVector.append(vector[i] * scalar)
-
-    return resVector
-
-
-
-def dotProduct(vector1, vector2):
-    res = 0
-    for i in range(len(vector1)):
-        res += vector1[i] * vector2[i]
-
-    return res
-
-
-
 def normalize(vector):
     length = 0
-    for i in range(len(vector)):
+    for i in range(vector.size):
         length += (vector[i] ** 2)
     
     length = math.sqrt(length)
 
-    resVector = []
+    resVector = np.array([])
     
-    for i in range(len(vector)):
-        resVector.append(vector[i] / length)
+    for i in range(vector.size):
+        resVector = np.append(resVector, (vector[i] / length))
 
     return resVector
 
 
 
 def qrDecomp(Matrix):
-    a = []
-    u = []
-    e = []
-
-    # Store all column Matrix to array a
-    temp = []
-    for i in range(len(Matrix)):
-        for j in range(len(Matrix)):
-            temp.append(Matrix[j][i])
-        a.append(temp)
-        temp = []
+    a = np.array(np.transpose(Matrix))
+    u = np.array([])
+    e = np.array([])
 
     # Gram-Schmidt Procedure
-    u.append(a[0])              # u1
-    e.append(normalize(a[0]))   # e1
+    u = np.append(u, a[0])              # u1
+    e = np.append(e, normalize(a[0]))   # e1
 
     # For un and en, n > 1
-    for i in range(1, len(a)):
+    u = np.array([u])
+    e = np.array([e])
+
+    for i in range(1, a.shape[0]):
         temp = a[i]
         for j in range(i):
-            temp = vectorSubtraction(temp, multiplyByScalar(dotProduct(a[i], e[j]), e[j]))
-        u.append(temp)
-        e.append(normalize(u[i]))
+            temp = np.subtract(temp, np.dot(a[i], e[j]) * e[j])
+        u = np.vstack([u, temp])
+        e = np.vstack([e, normalize(u[i])])
 
     # Q and R matrices
-    Q = [[0 for j in range(len(Matrix))] for i in range(len(Matrix))]
-    R = [[0 for j in range(len(Matrix))] for i in range(len(Matrix))]
+    Q = np.zeros(shape=(Matrix.shape[0], Matrix.shape[0]))
+    R = np.zeros(shape=(Matrix.shape[0], Matrix.shape[0]))
 
     for i in range(len(Matrix)):
         for j in range(len(Matrix)):
-            Q[j][i] = e[i][j]
+            Q[j, i] = e[i, j]
 
     for i in range(len(Matrix)):
         for j in range(len(Matrix)):
             if(i <= j):
-                R[i][j] = dotProduct(a[j], e[i])
+                R[i, j] = np.dot(a[j], e[i])
 
     return (Q, R)
 
 
 
 def eigenValue(Matrix): # Note : Call eigenValue(Matrix)[0] to return only the eigenvalues
-    eigenVal = []
+    eigenVal = np.array([])
 
     # Create Identity Matrix
-    QQ = [[0 for j in range(len(Matrix))] for i in range(len(Matrix))]
-    for i in range(len(Matrix)):
-        QQ[i][i] = 1
+    QQ = np.eye(Matrix.shape[0])
 
     # Matrix will converge as iteration approaches infinity (large number in practice)
-    for i in range(100):
+    for i in range(10):
         Q, R = qrDecomp(Matrix)
-        Matrix = matrixMultiplication(R, Q)
-        QQ = matrixMultiplication(QQ, Q)
+        Matrix = np.matmul(R, Q)
+        QQ = np.matmul(QQ, Q)
 
     for i in range(len(Matrix)):
-        eigenVal.append(Matrix[i][i])
+        eigenVal = np.append(eigenVal, Matrix[i, i])
 
     return (eigenVal, QQ)
 
 
 
 def eigenVector(Matrix):
-    mat = copy(Matrix)
-
-    eigenVecMatrix = eigenValue(mat)[1]
-
-    eigenVecMatrix = np.matrix(eigenVecMatrix)
-
-    return eigenVecMatrix
+    return eigenValue(Matrix)[1]
 
 
 
@@ -148,51 +94,50 @@ def eigenVector(Matrix):
 
 # TESTS
 # Samples
-a = ([[0, 0, -2], 
-     [1, 2, 1], 
-     [1, 0, 3]])
+a = np.array([[1, 1, 0], 
+     [1, 0, 1], 
+     [0, 1, 1]])
 
-b = [[3, 0],
-    [8, -1]]
+b = np.array([[3, 0],
+    [8, -1]])
 
 
-c= [[10, 0, 2],
+c= np.array([[10, 0, 2],
    [0, 10, 4],
-   [2, 4, 2]]
+   [2, 4, 2]])
 
-d = [[24294.3, 23763.3, -22564, -27522, 2028.72],         
+d = np.array([[24294.3, 23763.3, -22564, -27522, 2028.72],         
     [23763.3, 37215.3, -26584, -31211, -3183.3],         
     [-22564, -26584, 32686.9, 25780.3, -9319.5],       
     [-27522, -31211, 25780.3, 45872.7, -12919],       
-    [2028.72, -3183.3, -9319.5, -12919, 23393.1]]
+    [2028.72, -3183.3, -9319.5, -12919, 23393.1]])
 
-e = [[2, 1, 0],
+e = np.array([[2, 1, 0],
     [1, 2, 0],
-    [0, 0, 3],]
+    [0, 0, 3],])
 
-f = [[1, 1, 1, 1, 1],
+f = np.array([[1, 1, 1, 1, 1],
     [16, 8, 4, 2, 1],
     [81, 27, 9, 3, 1],
     [256, 64, 16, 4, 1],
-    [625, 125, 25, 5, 1]]
+    [625, 125, 25, 5, 1]])
 
 
 
 # Eigen Values
-print("Test Eigen Values :")
-print("Eigen Value Matriks a: ", eigenValue(a)[0])
-print("Eigen Value Matriks b: ", eigenValue(b)[0])
-print("Eigen Value Matriks c: ", eigenValue(c)[0])
-print("Eigen Value Matriks d: ", eigenValue(d)[0])
-print("Eigen Value Matriks e: ", eigenValue(e)[0])
-print("Eigen Value Matriks f: ", eigenValue(f)[0], '\n')
+# print("Test Eigen Values :")
+# print("Eigen Value Matriks a: ", eigenValue(a)[0])
+# print("Eigen Value Matriks b: ", eigenValue(b)[0])
+# print("Eigen Value Matriks c: ", eigenValue(c)[0])
+# print("Eigen Value Matriks d: ", eigenValue(d)[0])
+# print("Eigen Value Matriks e: ", eigenValue(e)[0])
+# print("Eigen Value Matriks f: ", eigenValue(f)[0], '\n')
 
 
 
 # Eigen Vectors
-b = np.matrix(b)
-d = np.matrix(d)
+# print("Test Eigen Values :")
+# print("Eigen Vector Matriks b:\n", (eigenVector(b)), '\n')
+# print("Eigen Vector Matriks d:\n", (eigenVector(d)), '\n')
 
-print("Test Eigen Values :")
-print("Eigen Vector Matriks b:\n", (eigenVector(b)), '\n')
-print("Eigen Vector Matriks d:\n", (eigenVector(d)), '\n')
+print(eigenVector(np.random.rand(256, 256)))
