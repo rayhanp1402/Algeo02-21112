@@ -2,11 +2,11 @@ import numpy as np
 import math
 from eigen2 import *
 from kofarian import *
-def trnsflat(list):
-    trans = np.zeros(shape=(len(list),1))
-    for i in range(len(list)):
-        trans[i][0] = list[i]
-    return trans
+# def trnsflat(list):
+#     trans = np.zeros(shape=(len(list),1))
+#     for i in range(len(list)):
+#         trans[i][0] = list[i]
+#     return trans
 #-------------------------------------------
 def rate(list_photo):
     n1 = list_photo[0]
@@ -45,12 +45,6 @@ def eigenface(list_photo):
     return hasil
 
 
-
-
-
-
-    
-
 def dotkali(matrix1,matrix2):
     row = len(matrix1)
     col = len(matrix1[0])
@@ -86,6 +80,8 @@ def splitmatrix(matrix):
 # b = b.flatten()
 # b = trnsflat(b)
 # d = [a,b]
+# e = kofarian(d)
+# print(e)
 # e = [a,b]
 # test = eigenface(e)
 # print(test)
@@ -95,8 +91,8 @@ def splitmatrix(matrix):
 
 
 
-def berat_eigface(list_photo):
-    eigface = eigenface(list_photo)
+def berat_eigface(eigen_face):
+    eigface = eigen_face
     hasil_akhir=[]
     hasil_split = splitmatrix(eigface)
     col = len(hasil_split)
@@ -134,16 +130,31 @@ def getMinIdx(list):
             break
     return idx
 
-def cek_img(new_img,list_photo):
+def normalisasi(list):
+    jml = 0
+    panjang = len(list)
+    k = [0 for i in range(panjang)]
+    copy = list
+    for i in range(panjang):
+        k[i] += list[i]**2
+    for i in range(panjang):
+        jml += k[i]
+    jml = jml**(1/2)
+    for i in range(panjang):
+        copy[i] = copy[i]/jml
+    return copy
+
+
+def cek_img(new_img,list_photo,eigen_face,weight_training):
     rata2 = rate(list_photo)
     kurang_img =  np.subtract(new_img,rata2)
     for j in range(len(new_img[0])):
         for i in range(len(new_img)):
             if((kurang_img[i][j])<0):
                 kurang_img[i][j] = kurang_img[i][j]*(-1)
-    eigface = eigenface(list_photo)
+    eigface = eigen_face
     ngesplit = splitmatrix(eigface)
-    berat_training=berat_eigface(list_photo)
+    berat_training=weight_training
     berat_img = np.zeros(shape=(len(ngesplit),1))
     for i in range (len(ngesplit)):
         berat_img[i] += dotkali(kurang_img,ngesplit[i])/dotkali(ngesplit[i],ngesplit[i])
@@ -151,7 +162,8 @@ def cek_img(new_img,list_photo):
         berat_training[i] = np.subtract(berat_img,berat_training[i])
     for i in range(len(ngesplit)):
         berat_training[i] = panjangmatrix(berat_training[i])
-    return berat_training
+    hasil_akhir = normalisasi(berat_training)
+    return hasil_akhir
     
     
 
@@ -178,6 +190,12 @@ def cek_img(new_img,list_photo):
 # new = trnsflat(new)
 
 # d = [a,b]
+# e = [a,b]
+
+# eig_face = eigenface(d)
+# weight = berat_eigface(eig_face)
+# testimage = cek_img(new,e,eig_face,weight)
+# print(testimage)
 
 # hasil = cek_img(new,d)
 # print(hasil)

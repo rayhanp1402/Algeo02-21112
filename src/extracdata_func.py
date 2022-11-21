@@ -2,8 +2,7 @@ import cv2
 import numpy as np
 import os
 
-#from PIL import Image as Img,ImageTk
-# from tkinter import *
+
 def trnsflat(list):
     trans = np.zeros(shape=(len(list),1))
     for i in range(len(list)):
@@ -27,18 +26,15 @@ def extractor_data(file_path):
 
         images.append(trnsp) 
     return images,pathallimage
+
+def nama_path(path):
+    nama_file = os.path.basename(path)
+    file = os.path.splitext(nama_file)
+    return file[0]
 # k,l = extractor_data('D:\\python\\Tubes Algeo 2\\Algeo02-21112\\test\\dataset')
-# p = k[0]
+# hasil = nama_path(l[0])
+# print(hasil)
 
-# print(len(p[0]))
 
 
-#win = Tk()
-#win.geometry("700x550")
-#p = l[2]
-#blue,green,red = cv2.split(p)
-#img = cv2.merge((red,green,blue))
-#im = Img.fromarray(img)
-#imgtk = ImageTk.PhotoImage(image=im)
-#Label(win, image= imgtk).pack()
-#win.mainloop()
+

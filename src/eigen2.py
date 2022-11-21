@@ -140,4 +140,4 @@ f = np.array([[1, 1, 1, 1, 1],
 # print("Eigen Vector Matriks b:\n", (eigenVector(b)), '\n')
 # print("Eigen Vector Matriks d:\n", (eigenVector(d)), '\n')
 
-print(eigenVector(np.random.rand(256, 256)))
+# print(eigenVector(np.random.rand(256, 256)))
