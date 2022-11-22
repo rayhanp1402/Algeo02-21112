@@ -8,7 +8,7 @@ def trnsflat(list):
     return trans
 def extraxtor_img(file_path):
     img = cv2.imread(file_path,cv2.IMREAD_GRAYSCALE)
-    img = cv2.resize(img, (256, 256))
+    img = cv2.resize(img, (100, 100))
     img = img.flatten()
     trnsp = trnsflat(img)
     

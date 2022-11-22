@@ -20,7 +20,7 @@ def extractor_data(file_path):
 
 
         img_gray = cv2.imread(os.path.join(path, filename),cv2.IMREAD_GRAYSCALE)#hitung
-        img_gray = cv2.resize(img_gray, (256, 256))#hitung
+        img_gray = cv2.resize(img_gray, (100, 100))#hitung
         img_gray = img_gray.flatten()
         trnsp = trnsflat(img_gray)
 
