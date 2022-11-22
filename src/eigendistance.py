@@ -2,12 +2,7 @@ import numpy as np
 import math
 from eigen2 import *
 from kofarian import *
-# def trnsflat(list):
-#     trans = np.zeros(shape=(len(list),1))
-#     for i in range(len(list)):
-#         trans[i][0] = list[i]
-#     return trans
-#-------------------------------------------
+
 def eigenVecMax(eigenVecMatrix):
     return (eigenVecMatrix[:, 0])
 
@@ -35,6 +30,24 @@ def sortEigen(eigenValue, eigenVecMatrix):
     return (eigenValue, eigenVecMatrix)
                 
 
+def potongmatrix(Matrix):
+    row = len(Matrix)
+    col = len(Matrix[0])
+    
+    if(col<=100):
+        kosong = np.zeros(shape=(row,col-1))
+        for i in range(row):
+            for j in range(col-1):
+                kosong[i][j] = Matrix[i][j]
+        return kosong
+    elif(col>100):
+        kosong2 = np.zeros(shape=(row,100))
+        for i in range(row):
+            for j in range(100):
+                kosong2[i][j] += Matrix[i][j]
+        return kosong2
+
+
 
 
 def rate(list_photo):
@@ -60,10 +73,12 @@ def kurangdgnrata2 (list_photo):
     return gabung
 def eigenface(list_photo):
     kov = kofarian(list_photo)
+    eigvalue = eigenValue(kov)[0]
     eigvec = eigenVector(kov)
-    eigmax = np.transpose(eigvec)
+    disort = sortEigen(eigvalue,eigvec)[1]
+    dipotong = potongmatrix(disort)
     matrixkrg = kurangdgnrata2(list_photo)
-    hasil = np.matmul(matrixkrg,eigmax)
+    hasil = np.dot(matrixkrg,dipotong)
     return hasil
 
 
@@ -89,26 +104,7 @@ def splitmatrix(matrix):
         d = np.zeros(shape=(row,1))
     return hasil
 
-# a = np.array([[2,0,1],
-#      [1,2,0],
-#      [0,2,4]])
 
-# b = np.array([[1,1,1],
-#      [0,1,0],
-#      [1,2,2]])
-# a = a.flatten()
-# a = trnsflat(a)
-
-# b = b.flatten()
-# b = trnsflat(b)
-# d = [a,b]
-# e = kofarian(d)
-# print(e)
-# e = [a,b]
-# test = eigenface(e)
-# print(test)
-# ngesplit = splitmatrix(a)
-# print(ngesplit)
 
 
 
@@ -153,9 +149,15 @@ def getMinIdx(list):
             idx = i
             break
     return idx
-
-
-
+def persen(list):
+    jml = 0
+    for i in range(len(list)):
+        jml += list[i]
+    hasil = [0 for i in range(len(list))]
+    for i in range(len(list)):
+        hasil[i] += list[i]*100/jml
+    return hasil
+    
 def cek_img(new_img,list_photo,eigen_face,weight_training):
     rata2 = rate(list_photo)
     kurang_img =  np.subtract(new_img,rata2)
@@ -169,51 +171,17 @@ def cek_img(new_img,list_photo,eigen_face,weight_training):
         berat_training[i] = np.subtract(berat_img,berat_training[i])
     for i in range(len(ngesplit)):
         berat_training[i] = panjangmatrix(berat_training[i])
-    return berat_training
+    hasil_akhir = persen(berat_training)
+    return hasil_akhir
     
     
 
         
 
 
-# a = np.array([[2,0,1],
-#      [1,2,0],
-#      [0,2,4]])
 
-# b = np.array([[1,1,1],
-#      [0,1,0],
-#      [1,2,2]])
-# new = np.array([[2,1,2],
-#      [0,3,4],
-#      [1,1,4]])
-# a = a.flatten()
-# a = trnsflat(a)
 
-# b = b.flatten()
-# b = trnsflat(b)
-
-# new = new.flatten()
-# new = trnsflat(new)
-
-# d = [a,b]
-# e = [a,b]
-
-# eig_face = eigenface(d)
-# weight = berat_eigface(eig_face)
-# testimage = cek_img(new,e,eig_face,weight)
-# print(testimage)
-
-# hasil = cek_img(new,d)
-# print(hasil)
-
-# # test = eigenface(e)
-# # print(test)
-# # ngesplit = splitmatrix(a)
-# # print(ngesplit)
-# berat = berat_eigface(d)
-# print(berat)
-
-print(eigenValue(a)[0])
-print(eigenVector(a))
-print(sortEigen(eigenValue(a)[0], eigenVector(a))[0])
-print(sortEigen(eigenValue(a)[0], eigenVector(a))[1])
+# print(eigenValue(a)[0])
+# print(eigenVector(a))
+# print(sortEigen(eigenValue(a)[0], eigenVector(a))[0])
+# print(sortEigen(eigenValue(a)[0], eigenVector(a))[1])

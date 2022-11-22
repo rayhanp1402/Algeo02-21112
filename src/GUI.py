@@ -17,7 +17,7 @@ judul = tk.Label(window,text="Selamat datang di Face Recognition")
 judul.grid(column=0,row=0)
 
 
-logo = Img.open('D:python\\Tubes Algeo 2\\Algeo02-21112\\src\\logo.png')
+logo = Img.open('..\\Algeo02-21112\\src\\logo.png')
 logo = ImageTk.PhotoImage(logo)
 logobel = tk.Label(image=logo)
 logobel.image = logo
@@ -80,7 +80,7 @@ def openimage():
             ekstrak = extraxtor_img(imagename)
             berat_image = cek_img(ekstrak,copy_list_foto,eig_face_list_foto,weight_training_foto)
             getminimum = getMinIdx(berat_image)
-            if(berat_image[getminimum]<0.30):
+            if(berat_image[getminimum]<=5):
                 imageclosest = Img.open(direktori[getminimum])
                 imageclosest2 = imageclosest.resize((256,256))
                 displayclosest = ImageTk.PhotoImage(imageclosest2)
@@ -91,9 +91,9 @@ def openimage():
                 hasil_waktu = f'{waktu:.2f}'
                 TimeDis.config(text=hasil_waktu)
                 print(berat_image[getminimum])
-            elif(berat_image[getminimum]>0.30 and berat_image[getminimum]<0.40):
+            elif(berat_image[getminimum]>5 and berat_image[getminimum]<15):
                 HasilResult.config(text="Tidak ada yang mirip")
-                imageclosest = Img.open('D:python\\Tubes Algeo 2\\Algeo02-21112\\src\\default.png')
+                imageclosest = Img.open('..\\Algeo02-21112\\src\\default.png')
                 imageclosest2 = imageclosest.resize((256,256))
                 displayclosest = ImageTk.PhotoImage(imageclosest2)
                 Labelmirip.config(image=displayclosest,width=256,height=256)
@@ -102,9 +102,9 @@ def openimage():
                 hasil_waktu = f'{waktu:.2f}'
                 TimeDis.config(text=hasil_waktu)
                 berat_image = []
-            else:
+            elif(berat_image[getminimum]>=15):
                 HasilResult.config(text="Image tidak diterima")
-                imageclosest = Img.open('D:python\\Tubes Algeo 2\\Algeo02-21112\\src\\default.png')
+                imageclosest = Img.open('..\\Algeo02-21112\\src\\default.png')
                 imageclosest2 = imageclosest.resize((256,256))
                 displayclosest = ImageTk.PhotoImage(imageclosest2)
                 Labelmirip.config(image=displayclosest,width=256,height=256)
@@ -122,7 +122,7 @@ hasilimage = ttk.Label(window,text="Pilih yuk pilih")
 hasilimage.grid(column=0,row=8)
 
 
-dasar = Img.open('D:python\\Tubes Algeo 2\\Algeo02-21112\\src\\default.png')
+dasar = Img.open('..\\Algeo02-21112\\src\\default.png')
 dasar = ImageTk.PhotoImage(dasar)
 
 
