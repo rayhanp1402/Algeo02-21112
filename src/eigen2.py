@@ -62,6 +62,7 @@ def qrDecomp(Matrix):
                 R[i, j] = np.dot(a[j], e[i])
 
     return (Q, R)
+    # https://www.math.ucla.edu/~yanovsky/Teaching/Math151B/handouts/GramSchmidt.pdf
 
 
 
