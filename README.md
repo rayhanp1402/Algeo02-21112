@@ -91,7 +91,7 @@ Klik select pada "Input training image"
 
 <br>
 
-Pilih folder dataset (telah diekstraksi dengan nilai 256 x 256 pixel) yang ingin digunakan untuk training
+Pilih folder dataset (telah diekstraksi dengan nilai M x M pixel) yang ingin digunakan untuk training
 
 <br>
 
