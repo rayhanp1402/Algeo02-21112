@@ -25,33 +25,14 @@ logobel.grid(column=0,row=1)
 
 ingfolder = '' #buat folder training image 
 copy = '' #copy folder training image
-# MatrixDisplay = []#untuk display ke app
-# MatEigVec = []
-# HitungMatrix = []
-# buang = []
 def cari():
     ingfolder = filedialog.askdirectory()
     global copy 
-    global eig_face_list_foto
-    global weight_training_foto
-    global direktori
-    global copy_list_foto
     copy = ingfolder
     if(ingfolder==''):
         hasilfolder.config(text='Belum milih folder nih')
     elif(ingfolder!=''):
         hasilfolder.config(text='Mantap')
-        HasilResult.config(text="Bentar lagi diitung")
-        start = time.time()
-        list_foto,direktori = extractor_data(ingfolder)
-        copy_list_foto,buang = extractor_data(ingfolder)
-        eig_face_list_foto = eigenface(list_foto)
-        weight_training_foto = berat_eigface(eig_face_list_foto)
-        end = time.time()
-        HasilResult.config(text="Mantap")
-        waktu = end-start
-        hasil_waktu = f'{waktu:.2f}'
-        TimeDis.config(text=hasil_waktu)
         
 
 
@@ -91,10 +72,14 @@ def openimage():
             #----------------------------------------------------
             #------------------Hitung Hitung---------------------
             #-----------------------------------------------------
+            list_foto,direktori = extractor_data(copy)
+            copy_list_foto,buang = extractor_data(copy)
+            eig_face_list_foto = eigenface(list_foto)
+            weight_training_foto = berat_eigface(eig_face_list_foto)
             ekstrak = extraxtor_img(imagename)
             berat_image = cek_img(ekstrak,copy_list_foto,eig_face_list_foto,weight_training_foto)
             getminimum = getMinIdx(berat_image)
-            if(berat_image[getminimum]<0.15):
+            if(berat_image[getminimum]<0.30):
                 imageclosest = Img.open(direktori[getminimum])
                 imageclosest2 = imageclosest.resize((256,256))
                 displayclosest = ImageTk.PhotoImage(imageclosest2)
@@ -104,7 +89,8 @@ def openimage():
                 waktu = end-start
                 hasil_waktu = f'{waktu:.2f}'
                 TimeDis.config(text=hasil_waktu)
-            elif(berat_image[getminimum]>0.15 and berat_image[getminimum]<0.25):
+                print(berat_image[getminimum])
+            elif(berat_image[getminimum]>0.30 and berat_image[getminimum]<0.40):
                 HasilResult.config(text="Tidak ada yang mirip")
                 imageclosest = Img.open('D:python\\Tubes Algeo 2\\Algeo02-21112\\src\\default.png')
                 imageclosest2 = imageclosest.resize((256,256))
@@ -114,6 +100,7 @@ def openimage():
                 waktu = end-start
                 hasil_waktu = f'{waktu:.2f}'
                 TimeDis.config(text=hasil_waktu)
+                berat_image = []
             else:
                 HasilResult.config(text="Image tidak diterima")
                 imageclosest = Img.open('D:python\\Tubes Algeo 2\\Algeo02-21112\\src\\default.png')
@@ -124,6 +111,8 @@ def openimage():
                 waktu = end-start
                 hasil_waktu = f'{waktu:.2f}'
                 TimeDis.config(text=hasil_waktu)
+                print(berat_image[getminimum])
+                berat_image = []
 
     
 imagebut = tk.Button(window,text="Select",command=openimage)
