@@ -149,14 +149,6 @@ def getMinIdx(list):
             idx = i
             break
     return idx
-def persen(list):
-    jml = 0
-    for i in range(len(list)):
-        jml += list[i]
-    hasil = [0 for i in range(len(list))]
-    for i in range(len(list)):
-        hasil[i] += list[i]*100/jml
-    return hasil
     
 def cek_img(new_img,list_photo,eigen_face,weight_training):
     rata2 = rate(list_photo)
@@ -171,8 +163,7 @@ def cek_img(new_img,list_photo,eigen_face,weight_training):
         berat_training[i] = np.subtract(berat_img,berat_training[i])
     for i in range(len(ngesplit)):
         berat_training[i] = panjangmatrix(berat_training[i])
-    hasil_akhir = persen(berat_training)
-    return hasil_akhir
+    return berat_training
     
     
 

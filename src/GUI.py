@@ -80,7 +80,7 @@ def openimage():
             ekstrak = extraxtor_img(imagename)
             berat_image = cek_img(ekstrak,copy_list_foto,eig_face_list_foto,weight_training_foto)
             getminimum = getMinIdx(berat_image)
-            if(berat_image[getminimum]<=5):
+            if(berat_image[getminimum]<=0.6):
                 imageclosest = Img.open(direktori[getminimum])
                 imageclosest2 = imageclosest.resize((256,256))
                 displayclosest = ImageTk.PhotoImage(imageclosest2)
@@ -91,7 +91,7 @@ def openimage():
                 hasil_waktu = f'{waktu:.2f}'
                 TimeDis.config(text=hasil_waktu)
                 print(berat_image[getminimum])
-            elif(berat_image[getminimum]>5 and berat_image[getminimum]<15):
+            elif(berat_image[getminimum]>0.6 and berat_image[getminimum]<1.5):
                 HasilResult.config(text="Tidak ada yang mirip")
                 imageclosest = Img.open('..\\Algeo02-21112\\src\\default.png')
                 imageclosest2 = imageclosest.resize((256,256))
@@ -102,7 +102,7 @@ def openimage():
                 hasil_waktu = f'{waktu:.2f}'
                 TimeDis.config(text=hasil_waktu)
                 berat_image = []
-            elif(berat_image[getminimum]>=15):
+            elif(berat_image[getminimum]>=1.5):
                 HasilResult.config(text="Image tidak diterima")
                 imageclosest = Img.open('..\\Algeo02-21112\\src\\default.png')
                 imageclosest2 = imageclosest.resize((256,256))
