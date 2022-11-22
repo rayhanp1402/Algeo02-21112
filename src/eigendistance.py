@@ -8,6 +8,10 @@ from kofarian import *
 #         trans[i][0] = list[i]
 #     return trans
 #-------------------------------------------
+def eigenVecMax(eigenVecMatrix):
+    return (eigenVecMatrix[0])
+
+
 def rate(list_photo):
     n1 = list_photo[0]
     row = len(n1)
@@ -170,9 +174,9 @@ def cek_img(new_img,list_photo,eigen_face,weight_training):
         
 
 
-# a = np.array([[2,0,1],
-#      [1,2,0],
-#      [0,2,4]])
+a = np.array([[2,0,1],
+     [1,2,0],
+     [0,2,4]])
 
 # b = np.array([[1,1,1],
 #      [0,1,0],
@@ -206,6 +210,10 @@ def cek_img(new_img,list_photo,eigen_face,weight_training):
 # # print(ngesplit)
 # berat = berat_eigface(d)
 # print(berat)
+
+print(eigenValue((a))[0])
+print(eigenVector(a))
+print(searchMax(eigenValue(a)[0], eigenVector(a)))
 
         
 
