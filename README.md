@@ -99,7 +99,7 @@ Pilih folder dataset (telah diekstraksi dengan nilai 256 x 256 pixel) yang ingin
 
 <br>
 
-Tunggu beberapa detik. Jika terlihat tulisan "mantap" sebagai berikut
+Tunggu beberapa waktu (semakin banyak isi dataset, semakin lama). Jika terlihat tulisan "mantap" sebagai berikut
 
 <br>
 
