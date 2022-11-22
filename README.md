@@ -89,7 +89,7 @@ Proses training sudah selesai. Kemudian, masukkan klik select pada "Input test i
 
 <br>
 
-![Input2]https://cdn.discordapp.com/attachments/865154167169351730/1044551759131050064/face_recognition_test.jpg
+![Input2](https://cdn.discordapp.com/attachments/865154167169351730/1044551759131050064/face_recognition_test.jpg)
 
 <br>
 
