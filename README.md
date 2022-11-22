@@ -13,10 +13,32 @@
 
 
 ### Table of Contents
-  1. [Cara Clone Program](#cara-clone-program)
-  2. [Cara Menjalankan Program](#cara-menjalankan-program)
-  3. [Menu](#menu)
-  4. [Contoh Penggunaan](#contoh-penggunaan)
+  1. [Prasyarat](#prasyarat)
+  2. [Cara Clone Program](#cara-clone-program)
+  3. [Cara Menjalankan Program](#cara-menjalankan-program)
+  4. [Menu](#menu)
+  5. [Contoh Penggunaan](#contoh-penggunaan)
+
+<br>
+
+### Prasyarat
+Telah mengunduh python versi 3.4 ke atas. Jika belum, silahkan unduh pada tautan berikut
+
+<a href="https://www.python.org/downloads/" target="_blank"></a>
+
+Unduh package OpenCV, tkinter, dan numpy dengan menjalankan perintah berikut
+
+```sh
+pip install opencv-python
+
+pip install tk
+
+pip install numpy
+
+pip install pillow
+```
+
+<br>
 
 <br>
 
@@ -85,7 +107,7 @@ Tunggu beberapa detik. Jika terlihat tulisan "mantap" sebagai berikut
 
 <br>
 
-Proses training sudah selesai. Kemudian, masukkan klik select pada "Input test image"
+Proses training sudah selesai. Kemudian, klik select pada "Input test image"
 
 <br>
 
