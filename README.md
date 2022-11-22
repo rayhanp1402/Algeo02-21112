@@ -26,7 +26,7 @@ Telah mengunduh python versi 3.4 ke atas. Jika belum, silahkan unduh pada tautan
 
 <a href="https://www.python.org/downloads/" target="_blank">Python</a>
 
-Unduh package OpenCV, tkinter, dan numpy dengan menjalankan perintah berikut
+Unduh package OpenCV, tkinter, dan numpy dengan menjalankan perintah berikut pada terminal
 
 ```sh
 pip install opencv-python
