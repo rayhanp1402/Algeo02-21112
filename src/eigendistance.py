@@ -12,6 +12,30 @@ def eigenVecMax(eigenVecMatrix):
     return (eigenVecMatrix[:, 0])
 
 
+def swapColumn(Matrix, Column1, Column2):
+    temp = np.zeros(Matrix.shape[1])
+    for i in range(Matrix.shape[1]):
+        temp[i] = Matrix[i, Column1]
+
+    for i in range(Matrix.shape[1]):
+        Matrix[i, Column1] = Matrix[i, Column2]
+        Matrix[i, Column2] = temp[i]
+
+    return Matrix
+
+def sortEigen(eigenValue, eigenVecMatrix):
+    for i in range(eigenVecMatrix.shape[1]):
+        for j in range(eigenVecMatrix.shape[1]):
+            if(i != j and eigenValue[i] >= eigenValue[j]):
+                swapColumn(eigenVecMatrix, i, j)
+                temp = eigenValue[i]
+                eigenValue[i] = eigenValue[j]
+                eigenValue[j] = temp
+
+    return (eigenValue, eigenVecMatrix)
+                
+
+
 
 def rate(list_photo):
     n1 = list_photo[0]
@@ -189,6 +213,7 @@ def cek_img(new_img,list_photo,eigen_face,weight_training):
 # berat = berat_eigface(d)
 # print(berat)
 
-# print(eigenValue((a))[0])
-# print(eigenVector(a))
-# print(searchMax(eigenValue(a)[0], eigenVector(a)))
+print(eigenValue(a)[0])
+print(eigenVector(a))
+print(sortEigen(eigenValue(a)[0], eigenVector(a))[0])
+print(sortEigen(eigenValue(a)[0], eigenVector(a))[1])
