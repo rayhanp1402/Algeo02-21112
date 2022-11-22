@@ -24,7 +24,7 @@
 ### Prasyarat
 Telah mengunduh python versi 3.4 ke atas. Jika belum, silahkan unduh pada tautan berikut
 
-<a href="https://www.python.org/downloads/" target="_blank"></a>
+<a href="https://www.python.org/downloads/" target="_blank">Python</a>
 
 Unduh package OpenCV, tkinter, dan numpy dengan menjalankan perintah berikut
 
