@@ -41,11 +41,9 @@ cd /mnt/c
 Jika sudah berada pada directory yang dimaksud, jalankan perintah-perintah berikut
 
 ```sh
-cd Algeo02-21112
+cd Algeo02-21112/src
 
-cd src
-
-python eigenface.py
+python GUI.py
 ```
 
 <br>
@@ -54,4 +52,47 @@ python eigenface.py
 
 ### Menu
 Tampilan menu program
+<br>
+
 ![Menu](https://cdn.discordapp.com/attachments/865154167169351730/1043844516467183716/face_recognition_app.jpg)
+
+<br>
+
+<br>
+
+### Contoh Penggunaan
+Klik select pada "Input training image"
+
+<br>
+
+
+
+<br>
+
+Pilih folder dataset yang ingin digunakan untuk training
+
+<br>
+
+
+
+<br>
+
+Tunggu beberapa detik. Jika terlihat tulisan "mantap" sebagai berikut
+
+<br>
+
+
+
+<br>
+
+Proses training sudah selesai. Kemudian, masukkan klik select pada "Input test image"
+
+<br>
+
+
+
+<br>
+
+Pilih foro yang ingin dikenali
+
+<br>
