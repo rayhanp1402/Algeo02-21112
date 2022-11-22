@@ -9,7 +9,7 @@ from kofarian import *
 #     return trans
 #-------------------------------------------
 def eigenVecMax(eigenVecMatrix):
-    return (eigenVecMatrix[0])
+    return (eigenVecMatrix[:, 0])
 
 
 def rate(list_photo):
@@ -211,9 +211,8 @@ a = np.array([[2,0,1],
 # berat = berat_eigface(d)
 # print(berat)
 
-print(eigenValue((a))[0])
-print(eigenVector(a))
-print(searchMax(eigenValue(a)[0], eigenVector(a)))
+eigv = (eigenVector(a))
+print(eigenVecMax(eigv))
 
         
 
