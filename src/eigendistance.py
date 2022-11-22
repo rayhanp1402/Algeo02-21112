@@ -3,10 +3,6 @@ import math
 from eigen2 import *
 from kofarian import *
 
-def eigenVecMax(eigenVecMatrix):
-    return (eigenVecMatrix[:, 0])
-
-
 def swapColumn(Matrix, Column1, Column2):
     temp = np.zeros(Matrix.shape[1])
     for i in range(Matrix.shape[1]):
