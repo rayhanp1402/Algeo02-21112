@@ -74,8 +74,9 @@ def openimage():
             #-----------------------------------------------------
             list_foto,direktori = extractor_data(copy)
             copy_list_foto,buang = extractor_data(copy)
+            copy_list_foto2,buang2 = extractor_data(copy)
             eig_face_list_foto = eigenface(list_foto)
-            weight_training_foto = berat_eigface(eig_face_list_foto)
+            weight_training_foto = berat_eigface(copy_list_foto2,eig_face_list_foto)
             ekstrak = extraxtor_img(imagename)
             berat_image = cek_img(ekstrak,copy_list_foto,eig_face_list_foto,weight_training_foto)
             getminimum = getMinIdx(berat_image)
